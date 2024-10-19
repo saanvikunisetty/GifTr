@@ -6,18 +6,19 @@ import "@radix-ui/themes/styles.css";
 import { SuiClientProvider, WalletProvider } from "@mysten/dapp-kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Theme } from "@radix-ui/themes";
-import App from "./App.tsx";
+import { router } from "./pages/Index.tsx"
 import { networkConfig } from "./networkConfig.ts";
+import { RouterProvider } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Theme appearance="dark">
+    <Theme appearance="light">
       <QueryClientProvider client={queryClient}>
         <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
           <WalletProvider autoConnect>
-            <App />
+            <RouterProvider router={router} />
           </WalletProvider>
         </SuiClientProvider>
       </QueryClientProvider>
