@@ -2,12 +2,18 @@
 
 * {
     font-family: 'DM Sans';
+    color: black;
+}
+
+body {
+    background-color: whitesmoke;
 }
 
 #navbar {
     width: 100%;
     height: 80px;
     position: fixed;
+    background-color: white;
     border-bottom-style: solid;
     border-width: 2px;
     border-color: gainsboro;
@@ -29,6 +35,7 @@
     position: relative;
     bottom: 20px;
     color: black;
+    background-color: whitesmoke;
     border-style: none;
     border-radius: 10px;
 }
