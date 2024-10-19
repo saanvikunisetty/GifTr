@@ -49,6 +49,13 @@
     cursor: pointer;
 }
 
+#footer {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: darkgray;
+    text-align: center
+}
+
 #navbar-space {
     height: 100px;
 }

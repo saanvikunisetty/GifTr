@@ -23,7 +23,7 @@ function Layout() {
                 </>
             }
             <Outlet />
-            <p>This is a Footer.</p>
+            <p id="footer">Made With ♥️ During CalHacks 11.0</p>
         </>
     );
 }
