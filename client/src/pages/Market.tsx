@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "@/Card";
 import './../styles/Market.css';
+import { useCurrentAccount } from "@mysten/dapp-kit";
 
 function Market() {
     const [cards, setCards] = useState([<p>There Are No Possible Trades.</p>]);
     const [owned, setOwned] = useState([<option value="">Select</option>]);
+    const account = useCurrentAccount();
 
     // fetch owned, push to array of option
+    useEffect(() => {
+        fetch('http://localhost:3000/api/cards/get', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                user: account?.label
+            })
+        })
+            .then(response => response.json())
+            .then(json => {
+                const list = [];
+                list.push(
+                    <option value="">Select</option>
+                );
+                for (var i = 0; i < json.length; i++) {
+                    const card = json[i];
+                    list.push(
+                        <option value={card.id}>{card.type}: ${card.value}</option>
+                    )
+                }
+                setOwned(list);
+            });
+    }, []);
 
     return (
         <div id="market">

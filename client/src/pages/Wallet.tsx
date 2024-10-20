@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '@/Card';
 import './../styles/Wallet.css';
 import { useCurrentAccount } from '@mysten/dapp-kit';
