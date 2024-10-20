@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import Card from '@/Card';
 import './../styles/Wallet.css';
 
 function Wallet() {
-    const [cards, setCards] = useState(<p>Loading...</p>);
+    const [cards, setCards] = useState([<p>Loading...</p>]);
     const [type, setType] = useState('');
     const [value, setValue] = useState(0);
+    const [desired, setDesired] = useState('');
 
     // fetch cards, push to array of Card component, use setCards to change state
 
@@ -34,7 +36,17 @@ function Wallet() {
                 <input type="radio" name="value" onClick={() => setValue(100)}/>
                 <label>$100</label><br/>
             </form>
-            <br />
+            <form className="add-card">
+                <h3>Enter Desired Card:</h3>
+                <input type="radio" name="desired" onClick={() => setType('Amazon')}/>
+                <label>Amazon</label><br/>
+                <input type="radio" name="desired" onClick={() => setType('AMC')}/>
+                <label>AMC</label><br/>
+                <input type="radio" name="desired" onClick={() => setType('Target')}/>
+                <label>Target</label><br/>
+                <input type="radio" name="desired" onClick={() => setType('H&M')}/>
+                <label>H&M</label>
+            </form>
             <br />
             <button id="add-card-button" onClick={() => {
                 // add card
@@ -47,6 +59,11 @@ function Wallet() {
                 const value_buttons = document.getElementsByName('value');
                 for (var i = 0; i < value_buttons.length; i++) {
                     const button = value_buttons[i] as HTMLInputElement;
+                    button.checked = false;
+                }
+                const desired_buttons = document.getElementsByName('desired');
+                for (var i = 0; i < desired_buttons.length; i++) {
+                    const button = desired_buttons[i] as HTMLInputElement;
                     button.checked = false;
                 }
                 setType('');

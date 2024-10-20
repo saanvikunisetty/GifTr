@@ -1,0 +1,13 @@
+#market {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#owned-cards {
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    border-style: none;
+    border-radius: 10px;
+    appearance: none;
+}
