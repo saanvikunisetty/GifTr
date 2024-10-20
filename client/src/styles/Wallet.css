@@ -1,0 +1,12 @@
+#wallet {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+input {
+    accent-color: rgb(120, 55, 75);
+}
