@@ -1,0 +1,19 @@
+#card {
+    width: 250px;
+    height: 200px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gainsboro;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#card-image {
+    width: 250px;
+    height: 165px;
+}
+
+#card-title {
+    margin-left: 15px;
+    margin-top: 5px;
+}

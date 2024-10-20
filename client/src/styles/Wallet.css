@@ -1,0 +1,33 @@
+#wallet {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+input {
+    accent-color: rgb(120, 55, 75);
+}
+
+#add-card-button {
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(75, 30, 40);
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#add-card-button:hover {
+    background-color: rgb(55, 10, 20);
+    cursor: pointer;
+}
