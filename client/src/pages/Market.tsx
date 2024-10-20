@@ -8,7 +8,6 @@ function Market() {
     const [owned, setOwned] = useState([<option value="">Select</option>]);
     const account = useCurrentAccount();
 
-    // fetch owned, push to array of option
     useEffect(() => {
         fetch('http://localhost:3000/api/cards/get', {
             method: 'post',
@@ -41,6 +40,24 @@ function Market() {
                 const value = e.target.value;
                 if (value != "") {
                     // fetch cards, push to array of Card component with trade onClick, use setCards to change state 
+                    fetch('http://localhost:3000/api/cards/search', {
+                        method: 'post',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            id: value
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(json => {
+                            const list = [];
+                            for (var i = 0; i < json.length; i++) {
+                                const card = json[i];
+                                list.push(
+                                    <Card type={card.type} value={card.value} />
+                                )
+                            }
+                            setCards(list);
+                        });
                 }
             }}>
                 { owned }
