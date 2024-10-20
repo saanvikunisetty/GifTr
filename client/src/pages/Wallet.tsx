@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import Card from '@/Card';
 import './../styles/Wallet.css';
+import { useCurrentAccount } from '@mysten/dapp-kit';
 
 function Wallet() {
     const [cards, setCards] = useState([<p>Loading...</p>]);
     const [type, setType] = useState('');
     const [value, setValue] = useState(0);
     const [desired, setDesired] = useState('');
+    const account = useCurrentAccount();
 
-    // fetch cards, push to array of Card component, use setCards to change state
+    useEffect(() => {
+        fetch('http://localhost:3000/api/cards/get', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                user: account?.label
+            })
+        })
+            .then(response => response.json())
+            .then(json => {
+                alert(json);
+                const list = [];
+                for (var i = 0; i < json.length; i++) {
+                    const card = json[i];
+                    list.push(
+                        <Card type={card.type} value={card.value} />
+                    )
+                }
+                setCards(list);
+            });
+    }, []);
 
     return (
         <div id="wallet">
