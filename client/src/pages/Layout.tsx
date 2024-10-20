@@ -26,7 +26,7 @@ function Layout() {
                         }}>Log Out</button>
                     </div>
                     <div id="navbar-space" />
-                    { account && <p id="account">Account: {account.address}</p>}
+                    { account && <p id="account">Account: {account.label} ({account.address})</p>}
                 </>
             }
             <Outlet />
