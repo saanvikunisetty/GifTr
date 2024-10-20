@@ -1,4 +1,5 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useDisconnectWallet, useCurrentAccount } from "@mysten/dapp-kit";
 import Logo from "./../images/Logo.png";
 import "./../styles/Layout.css";
 
@@ -6,6 +7,8 @@ function Layout() {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const { mutate: disconnect } = useDisconnectWallet();
+    const account = useCurrentAccount();
 
     return (
         <>
@@ -17,9 +20,13 @@ function Layout() {
                         <img id="logo" src={Logo} alt=""/>
                         <button className="link" onClick={() => {navigate("/market")}}>Market</button>
                         <button className="link" onClick={() => {navigate("/wallet")}}>Wallet</button>
-                        <button id="logout" onClick={() => {navigate("/login")}}>Log Out</button>
+                        <button id="logout" onClick={() => {
+                            disconnect();
+                            navigate("/login");
+                        }}>Log Out</button>
                     </div>
                     <div id="navbar-space" />
+                    { account && <p id="account">Account: {account.address}</p>}
                 </>
             }
             <Outlet />

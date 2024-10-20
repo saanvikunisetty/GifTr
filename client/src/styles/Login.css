@@ -1,0 +1,29 @@
+#login-title {
+    margin-top: calc(50vh - 125px);
+    padding: 15px;
+    font-size: 72px;
+    line-height: 72px;
+    color: rgb(120, 55, 75);
+    text-align: center;
+}
+
+#login-subtitle {
+    text-align: center;
+}
+
+#connect {
+    width: 250px;
+    height: 50px;
+    margin-left: calc(50% - 125px);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: white;   
+    background-color: rgb(75, 30, 40);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#connect:hover {
+    background-color: rgb(55, 10, 20);
+    cursor: pointer;
+}
