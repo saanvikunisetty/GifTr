@@ -73,7 +73,6 @@ function Wallet() {
             <br />
             <button id="add-card-button" onClick={() => {
                 if (type != null && value != null && desired != null) {
-                    alert('hi');
                     fetch('http://localhost:3000/api/cards/add', {
                         method: 'post',
                         headers: {'Content-Type': 'application/json'},
@@ -86,7 +85,6 @@ function Wallet() {
                     })
                         .then(response => response.json())
                         .then(json => {
-                            alert(JSON.stringify(json));
                             const list = [];
                             for (var i = 0; i < json.length; i++) {
                                 const card = json[i];

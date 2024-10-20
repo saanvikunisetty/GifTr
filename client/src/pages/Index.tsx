@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
             element: <Wallet />
         },
         {
+            path: "",
+            element: <Login />
+        },
+        {
             path: "*",
             element: <Error />
         }
