@@ -20,7 +20,6 @@ function Wallet() {
         })
             .then(response => response.json())
             .then(json => {
-                alert(json);
                 const list = [];
                 for (var i = 0; i < json.length; i++) {
                     const card = json[i];
@@ -35,7 +34,9 @@ function Wallet() {
     return (
         <div id="wallet">
             <h1>My Wallet</h1>
-            {cards}
+            <div id="card-container">
+                {cards}
+            </div>
             <br />
             <h2>Add Card:</h2>
             <form className="add-card">
@@ -60,19 +61,42 @@ function Wallet() {
             </form>
             <form className="add-card">
                 <h3>Enter Desired Card:</h3>
-                <input type="radio" name="desired" onClick={() => setType('Amazon')}/>
+                <input type="radio" name="desired" onClick={() => setDesired('Amazon')}/>
                 <label>Amazon</label><br/>
-                <input type="radio" name="desired" onClick={() => setType('AMC')}/>
+                <input type="radio" name="desired" onClick={() => setDesired('AMC')}/>
                 <label>AMC</label><br/>
-                <input type="radio" name="desired" onClick={() => setType('Target')}/>
+                <input type="radio" name="desired" onClick={() => setDesired('Target')}/>
                 <label>Target</label><br/>
-                <input type="radio" name="desired" onClick={() => setType('H&M')}/>
+                <input type="radio" name="desired" onClick={() => setDesired('H&M')}/>
                 <label>H&M</label>
             </form>
             <br />
             <button id="add-card-button" onClick={() => {
-                // add card
-                // refresh cards with setCards
+                if (type != null && value != null && desired != null) {
+                    alert('hi');
+                    fetch('http://localhost:3000/api/cards/add', {
+                        method: 'post',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            type: type,
+                            value: value,
+                            owner: account?.label,
+                            desired: desired,
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(json => {
+                            alert(JSON.stringify(json));
+                            const list = [];
+                            for (var i = 0; i < json.length; i++) {
+                                const card = json[i];
+                                list.push(
+                                    <Card type={card.type} value={card.value} />
+                                )
+                            }
+                            setCards(list);
+                        });
+                }
                 const type_buttons = document.getElementsByName('type');
                 for (var i = 0; i < type_buttons.length; i++) {
                     const button = type_buttons[i] as HTMLInputElement;

@@ -22,7 +22,9 @@ function Market() {
             </select>
             <br />
             <br />
-            { cards }
+            <div id="card-container">
+                {cards}
+            </div>
         </div>
     );
 }

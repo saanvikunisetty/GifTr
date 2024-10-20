@@ -3,6 +3,12 @@
     padding-right: 25px;
 }
 
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 #owned-cards {
     width: 100%;
     padding: 15px;
